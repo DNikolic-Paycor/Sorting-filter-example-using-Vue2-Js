@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Sort filters</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="app">
+    <app-header class="header" :text="text"></app-header>
+    <div class="controls">
+        <button type="button" name="button" @click="sortByPriceUp()">Price Up</button>
+        <button type="button" name="button" @click="sortByPriceDown()">Price Down</button>
+        <button type="button" name="button" @click="sortAlpha()">Alphabeticly A-Z</button>
+        <button type="button" name="button" @click="sortAlphaZ()">Alphabeticly Z-A</button>
+        <button type="button" name="button" @click="sortByDateNew()">By Date(Newest)</button>
+        <button type="button" name="button" @click="sortByDateOld()">By Date(Oldest)</button>
+        <button type="button" name="button" @click="sortByid()">By Id</button>
+      </div>
+<!-- in select options v-model takes a string from filters arr and in switch function pass that
+      string as a param to call a coresponding sort method-->
+    <select v-model="filter" v-on:change="change(filter)" >
+      <option value="" disabled selected style="display: none;">Please select a filter</option>
+       <option v-for="i in filters">{{i}}</option>
+    </select>
+    <app-list :id-list="idList"></app-list>
+
+</div><!--end of app-->
+
+
+
+<script src="https://unpkg.com/vue"></script>
+<script type="text/javascript" src="script.js"></script>
+</body>
+</html>
